@@ -1,0 +1,44 @@
+{
+  "name": "constrct.js",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap --use-workspaces && yarn build",
+    "build": "yarn clean && lerna exec --parallel -- yarn build",
+    "dev:web": "lerna exec --parallel --scope=web-* -- yarn dev",
+    "dev:server": "lerna exec --parallel --scope=*-api -- yarn dev",
+    "dev": "run-p dev:*",
+    "clean": "lerna exec --parallel --no-bail -- yarn clean",
+    "lint": "lerna exec --parallel -- yarn lint",
+    "lerna-publish": "lerna publish",
+    "test": "yarn lint",
+    "prod:web": "lerna exec --parallel --scope=web-* -- yarn start",
+    "prod:server": "lerna exec --parallel --scope=*-api -- yarn start",
+    "prod": "run-p prod:*"
+  },
+  "description": "A boilerplate application stack",
+  "main": "index.js",
+  "repository": "https://github.com/SharonGrossman/constrct.js.git",
+  "author": "Sharon Grossman <sharong1337@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "eslint": "6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-sharongrossman": "^0.1.3",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-lodash": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-unicorn": "^12.0.1",
+    "husky": "^3.0.7",
+    "lerna": "^3.16.4",
+    "lint-staged": "^9.4.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "rimraf": "^3.0.0"
+  }
+}
